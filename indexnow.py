@@ -34,7 +34,6 @@ with m16_site:
         buf_2['category_id'] = datum[3]
         new_local_db[int(datum[0])] = buf
         new_sub_local_db[int(datum[0])] = buf_2
-    # print(new_local_db)
 
 with m16_service:
     cur = m16_service.cursor()
@@ -47,7 +46,6 @@ with m16_service:
         else:
             buf['link'] = 'https://m16-estate.ru/news/' + datum[2]
         old_local_db[int(datum[0])] = buf
-    # print(old_local_db)
 
 for datum in new_local_db:
     if datum in old_local_db:
@@ -64,7 +62,6 @@ for datum in new_local_db:
         final_local_db[datum] = new_local_db[datum]
         ins_local_db[datum] = new_sub_local_db[datum]
 
-# print(final_local_db)
 
 post_json = {
     "host": "m16-estate.ru",
